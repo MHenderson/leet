@@ -1,23 +1,15 @@
-nums1 = [1,2,3,0,0,0]
-nums2 = [2,5,6]
-m = 6
-n = 3
+class Solution(object):
 
-def find_index(X, y):
-    i = 0
-    for i in range(len(X)):
-        if X[i]>=y or X[i]==0:
-            return(i)
-
-def merge(nums1, m, nums2, n):
-    for i in nums2:
-        x = find_index(nums1, i)
-        print(x)
-        for j in range(5, -1, -1):
-            if j == x:
-                nums1[j] == i
-            else:
-                nums1[j] == nums1[j - 1]
-    print(nums1)
-
-print(merge(nums1, m, nums2, n))
+    def merge(self, nums1, m, nums2, n):
+        """
+        :type nums1: List[int]
+        :type m: int
+        :type nums2: List[int]
+        :type n: int
+        :rtype: None Do not return anything, modify nums1 in-place instead.
+        """
+        for i in nums2:
+            for j in range(m):
+                if nums1[j]>=i or nums1[j]==0:
+                    nums1 = nums1[0:j] + [i] + nums1[j:m - 1]
+                    break
